@@ -11,11 +11,8 @@ export default function NavBar() {
           <ul className="nav-links">
             <li><a href="#">Gallery</a></li>
             <li><a href="#">About Us</a></li>
-            <li><a href="#">Insights</a></li>
+            <li><a href="#">Sign Up</a></li>
           </ul>
-          {/* <a href="#">
-            <button>Contact</button>
-          </a> */}
         </nav>
         <div className="hamburger">
           <div className="line1"></div>

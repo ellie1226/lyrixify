@@ -1,7 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import NavBar from "./NavBar";
+import SearchBar from "./SearchBar";
 
 export default function Home() {
   return (
@@ -14,6 +14,7 @@ export default function Home() {
         </Head>
         <NavBar />
         <main className={styles.main}>
+          <SearchBar />
           <h1 className={styles.title}>
             <a>Welcome to UnHinged!</a>
           </h1>
@@ -30,7 +31,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            © 20202 Created by Ellen Kwan
+            © 2021 Created by Ellen Kwan
             <span className={styles.logo}>
             </span>
           </a>

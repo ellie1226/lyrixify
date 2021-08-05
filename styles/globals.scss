@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+// variables
+$primary-color: #0070f3;
+$font-stack: Montserrat, Roboto, Helvetica Neue, sans-serif;
+$background-color: rgb(231, 228, 228);
+
+
+html,
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: $font-stack;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  cursor: pointer;
+  margin-right: auto;
+  margin-left: 50px
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  min-height: 8vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  background-color: $background-color;
+}
+
+.nav-container {
+  width: 100%;
+  .nav-menu {
+    margin-right: 50px;
+  }
+  .nav-links {
+    list-style-type: none;
+    cursor: pointer;
+    margin-left: auto;
+    li {
+      margin-left: 30px;
+      display: inline-block;
+      font-size: 14px;
+      &:hover {
+        color:$primary-color
+      }
+    }
+  }
+}
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  div {
+    width: 23px;
+    height: 2px;
+    background-color: black;
+    margin: 5px;
+  }
+  :nth-child(2) {
+    width: 15px;
+    align-self: right;
+  }
+}
+
+.toggle {
+  .line1 {
+    transform: rotate(-45deg) translate(-5px,5px);
+  }
+  .line2 {
+    opacity: 0;
+  }
+  .line3 {
+    transform: rotate(45deg) translate(-5px,-4px);
+  }
+}
+
+/*-----Media Screens-----*/
+@media screen and (max-width: 1024px) {
+  .nav-links li {
+    margin: 0 12px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .nav-links {
+    position: absolute;
+    right: 0px; 
+    height: 94vh;
+    top: 8vh;
+    margin-right: 0px;
+    width: 35%;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(100%);
+    background-color: rgba($background-color, 0.5);
+    align-items: center;
+    li {
+      margin: 25px;
+      opacity: 0;
+    }
+    a {
+      font-size: 12px;
+    }
+  }
+
+  .nav-active {
+    transition: transform 0.5s ease-in;
+    transform: translateX(0%);
+    li {
+      opacity: 100%;
+      animation: navLink-fade 2s;
+    }
+  } 
+
+  .hamburger {
+    display: block;
+  }
+}
+// navBar animation
+@keyframes navLink-fade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}

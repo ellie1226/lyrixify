@@ -4,16 +4,15 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
 export default function SearchBar() {
+
   return (
-    <div className="search-bar" style={{ width: 300 }}>
+    <div  className="search-bar" style={{ width: 300 }}>
       <Autocomplete
-        id="free-solo"
-        freeSolo
         options={top100Films.map((option) => option.title)}
         renderInput={(params) => (
           <TextField
           {...params}
-          label="Search for your next vacay..."
+          label="Search for a song..."
           margin="normal"
           variant="outlined"
           />

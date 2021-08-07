@@ -84,7 +84,7 @@ header {
     opacity: 0;
   }
   .line3 {
-    transform: rotate(45deg) translate(-5px,-4px);
+    transform: rotate(45deg) translate(-5px,-4.5px);
   }
 }
 
@@ -128,7 +128,7 @@ header {
     transform: translateX(0%);
     li {
       opacity: 100%;
-      animation: navLink-fade 2s;
+      animation: navLink-fade 1.5s;
     }
   } 
 

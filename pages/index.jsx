@@ -1,14 +1,17 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.scss";
+import Head from "next/head";
 import NavBar from "./NavBar";
+import { searchByArtists } from "../lib/spotify";
 
-export default function Home() {
+export default function Home({data}) {
+
+  console.log('index page', data);
 
   return (
     <>
       <div className={styles.container}>
         <Head>
-          <title>UnHinged</title>
+          <title>Lyrixify</title>
           <meta name="description" content="Next App Shell" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
@@ -25,15 +28,22 @@ export default function Home() {
 
         <footer className={styles.footer}>
           <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             © 2021 Created by Ellen Kwan
-            <span className={styles.logo}></span>
           </a>
         </footer>
       </div>
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const response = await searchByArtists();
+  const data = await response.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+};

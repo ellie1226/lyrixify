@@ -1,11 +1,9 @@
 import styles from "../styles/Home.module.scss";
 import Head from "next/head";
 import NavBar from "./NavBar";
-import { searchByArtists } from "../lib/spotify";
+import { searchAllItems } from "../lib/spotify";
 
 export default function Home({data}) {
-
-  console.log('index page', data);
 
   return (
     <>
@@ -38,7 +36,7 @@ export default function Home({data}) {
 }
 
 export const getStaticProps = async () => {
-  const response = await searchByArtists();
+  const response = await searchAllItems('snoh');
   const data = await response.json();
 
   return {

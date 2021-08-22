@@ -1,48 +1,51 @@
-import queryString from "query-string";
+import queryString from 'query-string';
+
+let isAuthorized = null;
+let expireTime = 0;
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+const token_endpoint = process.env.SPOTIFY_TOKEN_ENDPOINT;
 
-const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
-const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
-let accessToken = null;
+const authorizationHeader = Buffer.from(
+  `${client_id}:${client_secret}`
+).toString('base64');
 
-console.log("Basic authorization string created", basic)
+const isExpired = () => {
+  expireTime ? Date.now() > expireTime : false;
+};
 
-const getAccessToken = async () => {
-  const response = await fetch(TOKEN_ENDPOINT, {
-    method: "POST",
+const authenticate = async () => {
+  const response = await fetch(token_endpoint, {
+    method: 'POST',
     headers: {
-      Authorization: `Basic ${basic}`,
-      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `Basic ${authorizationHeader}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: queryString.stringify({
-      grant_type: "client_credentials",
+      grant_type: 'client_credentials',
     }),
   });
-  return response.json();
+
+  const token = await response.json();
+  
+  // saves inital token expiry time for reference at every api request
+  const expires_in = Number.parseInt(token.expires_in, 10);
+  expireTime = Date.now() + expires_in * 1000;
+  
+  isAuthorized = token.access_token;
+
+  return isAuthorized;
 };
 
 const setAccessToken = async () => {
-  if (accessToken) {
-    return accessToken;
-  } else {
-    const { access_token } = await getAccessToken();
-    accessToken = access_token;
-    return accessToken;
-  }
-}
+  isAuthorized && !isExpired() ? isAuthorized : await authenticate();
+};
 
-// TODO: create a getRefreshToken if the token has expired. This can be handled in the performRequestFromParams handler
-// const getRefreshToken = () => {}
+export const performRequestsFromParams = async (api_url) => {
+  const accessToken = await setAccessToken();
 
-
-// TODO: add a check to check if there is an error response for token expiration
-export const performRequestFromParams = async (endpoint) => {
-  accessToken = await setAccessToken();
-  console.log("Access_token retrieved!!", accessToken)
-
-  return fetch(endpoint, {
+  return fetch(api_url, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
@@ -51,10 +54,11 @@ export const performRequestFromParams = async (endpoint) => {
 
 export const searchTracks = () => {
   const SEARCH_TRACKS = `https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V`;
-  return performRequestFromParams(SEARCH_TRACKS)
+  return performRequestsFromParams(SEARCH_TRACKS);
 };
 
-export const searchByArtists = () => {
-  const SEARCH_ARTISTS = `https://api.spotify.com/v1/search?q=snoh&type=artist&limit=5`;
-  return performRequestFromParams(SEARCH_ARTISTS)
+export const searchAllItems = (keywords) => {
+  // let keyword = '';
+  const SEARCH_ARTISTS = `https://api.spotify.com/v1/search?q=${keywords}&type=artist,track&limit=10`;
+  return performRequestsFromParams(SEARCH_ARTISTS);
 };

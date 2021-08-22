@@ -1,21 +1,19 @@
-import styles from "../styles/Home.module.scss";
-import Head from "next/head";
-import NavBar from "./NavBar";
-import { searchByArtists } from "../lib/spotify";
+import styles from '../styles/Home.module.scss';
+import Head from 'next/head';
+// import NavBar from './components/NavBar';
+// import { searchAllItems } from '../lib/spotify';
 
 export default function Home({data}) {
-
-  console.log('index page', data);
 
   return (
     <>
       <div className={styles.container}>
         <Head>
           <title>Lyrixify</title>
-          <meta name="description" content="Next App Shell" />
-          <link rel="icon" href="/favicon.ico" />
+          <meta name='description' content='Next App Shell' />
+          <link rel='icon' href='/favicon.ico' />
         </Head>
-        <NavBar />
+        {/* <NavBar /> */}
         <main className={styles.main}>
           <h1 className={styles.title}>
             <a>Welcome to UnHinged!</a>
@@ -37,13 +35,13 @@ export default function Home({data}) {
   );
 }
 
-export const getStaticProps = async () => {
-  const response = await searchByArtists();
-  const data = await response.json();
+// export const getStaticProps = async () => {
+//   const response = await searchAllItems('snoh');
+//   const data = await response.json();
 
-  return {
-    props: {
-      data,
-    },
-  };
-};
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// };

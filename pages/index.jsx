@@ -1,6 +1,8 @@
 import styles from '../styles/Home.module.scss';
 import Head from 'next/head';
-// import NavBar from './components/NavBar';
+import NavBar from './NavBar';
+import SearchBar from './SearchBar';
+
 // import { searchAllItems } from '../lib/spotify';
 
 export default function Home({data}) {
@@ -13,10 +15,11 @@ export default function Home({data}) {
           <meta name='description' content='Next App Shell' />
           <link rel='icon' href='/favicon.ico' />
         </Head>
-        {/* <NavBar /> */}
+        <NavBar />
+        <SearchBar />
         <main className={styles.main}>
           <h1 className={styles.title}>
-            <a>Welcome to UnHinged!</a>
+            <a>Welcome to Lyrixify!</a>
           </h1>
 
           <p className={styles.description}>

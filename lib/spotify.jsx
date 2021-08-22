@@ -1,4 +1,4 @@
-import queryString from "query-string";
+import queryString from 'query-string';
 
 let isAuthorized = null;
 let expireTime = 0;
@@ -9,7 +9,7 @@ const token_endpoint = process.env.SPOTIFY_TOKEN_ENDPOINT;
 
 const authorizationHeader = Buffer.from(
   `${client_id}:${client_secret}`
-).toString("base64");
+).toString('base64');
 
 const isExpired = () => {
   expireTime ? Date.now() > expireTime : false;
@@ -17,13 +17,13 @@ const isExpired = () => {
 
 const authenticate = async () => {
   const response = await fetch(token_endpoint, {
-    method: "POST",
+    method: 'POST',
     headers: {
       Authorization: `Basic ${authorizationHeader}`,
-      "Content-Type": "application/x-www-form-urlencoded",
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: queryString.stringify({
-      grant_type: "client_credentials",
+      grant_type: 'client_credentials',
     }),
   });
 
@@ -58,7 +58,7 @@ export const searchTracks = () => {
 };
 
 export const searchAllItems = (keywords) => {
-  // let keyword = "";
+  // let keyword = '';
   const SEARCH_ARTISTS = `https://api.spotify.com/v1/search?q=${keywords}&type=artist,track&limit=10`;
   return performRequestsFromParams(SEARCH_ARTISTS);
 };

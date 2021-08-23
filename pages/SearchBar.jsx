@@ -7,9 +7,10 @@ export default function SearchBar() {
   return (
     <div className={styles.box_container}>
       <div className={styles.elements_container}>
-        <a href="#">
+        <a href="#" className={styles.magnifierIcon}>
           <SearchOutlinedIcon />
         </a>
+        <input type='text' placeholder='Search by song, artist, album...' className={styles.search}/>
       </div>
     </div>
   );

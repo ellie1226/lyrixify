@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
+import SearchBar from "./SearchBar";
 
 export default function NavBar() {
   const [isActive, setActive] = useState(false);
   const node = useRef();
 
   // navBar links and paths
-  const menuList = ["Gallery", "About Us", "Sign Up"];
+  const menuList = ["About Us", "Sign Up"];
 
   // className options based on responsive web design
   const menuOptions = isActive ? "nav-active nav-links" : "nav-links";
@@ -30,8 +31,9 @@ export default function NavBar() {
     <div className="nav-container">
       <header>
         <div className="logo">
-          <h2>Logo</h2>
+          <h2>Lyrixify</h2>
         </div>
+        <SearchBar />
         <nav className="nav-menu">
           <ul className={menuOptions}>
             {menuList.length &&

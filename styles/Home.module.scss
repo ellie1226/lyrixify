@@ -1,6 +1,21 @@
-@mixin flexCenter {
-  text-align: center;
+$background-color: #fff;
+$border-color: #eaeaea;
+$transition: color 0.15s ease, border-color 0.15s ease;
+   
+@mixin cardDefaults {
+  margin: 1rem;
+  padding: 1.7rem;
+  text-align: left;
+  text-decoration: none;
+  border: 1px solid $border-color;
+  border-radius: 10px;
+  background-color: $background-color;
+  justify-content: space-between;
+  h2 {
+    font-size: 1rem;
+  }
 }
+
 .container {
   min-height: 100vh;
   display: flex;
@@ -9,6 +24,7 @@
   align-items: center;
   height: auto !important;
   overflow: scroll;
+  background-color: #f5f5f7;
 }
 
 .main {
@@ -24,7 +40,7 @@
   width: 100%;
   height: 80px;
   font-size: 12px;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid $border-color;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,66 +63,55 @@
     &:hover,
     &:focus,
     &:active {
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
-  @include flexCenter();
+  text-align: center;
 }
 
 .description {
-  @include flexCenter();
+  text-align: center;
   line-height: 1.5;
   font-size: 1.5rem;
 }
 
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
 .grid {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  // align-items: center;
+  // justify-content: center;
+  // flex-wrap: wrap;
   max-width: 800px;
   margin-top: 3rem;
 }
 
 .card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  width: 45%;
-  &:hover,
-  &:focus,
-  &:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  @include cardDefaults();
+  width: 450px;
+  // grid-template-columns: [index] 16px [first] 4fr [var1] 2fr [last] minmax(120px,1fr);
+  .content {
+    display: flex;
+    align-items: center;
+    padding: 20px 0px
   }
-  h2 {
-    margin: 0 0 1rem 0;
-    font-size: 1.5rem;
-  }
-  p {
-    margin: 0;
-    font-size: 1.25rem;
+  a {
+    padding: 10px 25px;
+    font-size: 1rem;
     line-height: 1.5;
+  }
+  .column_order {
+    margin-right: auto;
   }
 }
 
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
+.horizontal_container {
+  @include cardDefaults();
+  width: 70%;
+  height: auto;
+  .horizontal_list {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 @media (max-width: 600px) {

@@ -3,7 +3,7 @@
 // variables
 $primary-color: #0070f3;
 $font-stack: Montserrat, Roboto, Helvetica Neue, sans-serif;
-$background-color: rgb(231, 228, 228);
+$background-color: #f5f5f7;
 
 
 html,
@@ -22,7 +22,7 @@ body {
 
 .logo {
   cursor: pointer;
-  margin-right: auto;
+  margin-right: 115px;
   margin-left: 50px
 }
 
@@ -32,9 +32,8 @@ a {
 }
 
 header {
-  min-height: 8vh;
+  min-height: 10vh;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   flex-direction: row;
   background-color: $background-color;

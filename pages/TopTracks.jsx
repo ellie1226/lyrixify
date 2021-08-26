@@ -19,6 +19,18 @@ const dummyObject = [
     artist: 'Dua Lipa',
     song: `Don't Start Now`,
   },
+  {
+    artist: 'Tones and I',
+    song: 'Dance Monkey',
+  },
+  {
+    artist: 'Dua Lipa',
+    song: `Don't Start Now`,
+  },
+  {
+    artist: 'Dua Lipa',
+    song: `Don't Start Now`,
+  },
 ];
 
 export default function TopTracks() {

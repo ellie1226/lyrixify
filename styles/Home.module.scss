@@ -24,31 +24,12 @@ $transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .main {
-  padding: 3rem 0;
+  padding: 2rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.footer {
-  width: 100%;
-  height: 15vh;
-  bottom: 0;
-  position: absolute;
-  font-size: 12px;
-  border-top: 1px solid $border-color;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  a {
-    width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-  }
 }
 
 .title {
@@ -77,7 +58,7 @@ $transition: color 0.15s ease, border-color 0.15s ease;
   @include cardDefaults();
   margin-left: auto;
   margin-right: 50px;
-  width: 375px;
+  width: 360px;
   .grid {
     display: grid;
     grid-template-columns: 20px 40px auto 50px;
@@ -103,38 +84,56 @@ $transition: color 0.15s ease, border-color 0.15s ease;
   }
 }  
 
-
-// .grid {
-//   display: flex;
-//   max-width: 800px;
-//   margin-top: 3rem;
-//   .card {
-//     @include cardDefaults();
-//     width: 450px;
-//     .content {
-//       display: flex;
-//       align-items: center;
-//       padding: 20px 0px
-//     }
-//     a {
-//       padding: 10px 25px;
-//       font-size: 1rem;
-//       line-height: 1.5;
-//     }
-//     .column_order {
-//       margin-right: auto;
-//     }
-//   }  
-// }
-
 .horizontal_container {
   @include cardDefaults();
-  width: 70%;
+  position: absolute;
+  display: grid;
+  gap: 40px;
+  grid-auto-flow: column;
+  left: 50px;
+  bottom: 11vh;
+  width: 65%;
   height: auto;
+  overflow-x: scroll;
   .horizontal_list {
-    margin-top: 20px;
+    display: grid;
+    margin-top: 50px;
+    gap: 5px;
+    justify-items: center;
+    align-items: center;
+  }
+  h3 {
+    position: absolute;
+    padding: 1.7rem;
+  }
+  p,
+  h4 {
+    font-size: .7rem;
+  }
+  .cover {
+    width: 80px;
+    height: 80px;
+    border: 1px solid $border-color;
+    background-color: $background-color;
+  }
+}
+
+.footer {
+  width: 100%;
+  height: 10vh;
+  bottom: 0;
+  position: absolute;
+  font-size: 12px;
+  border-top: 1px solid $border-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a {
+    width: 20%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
   }
 }
 

@@ -8,10 +8,6 @@ export default function NavBar() {
   // navBar links and paths
   const menuList = ["About Us", "Sign Up"];
 
-  // className options based on responsive web design
-  const menuOptions = isActive ? "nav-active nav-links" : "nav-links";
-  const burgerOptions = isActive ? "hamburger toggle" : "hamburger";
-
   useEffect(() => {
     // add when mounted
     document.addEventListener("mousedown", handleClick);
@@ -35,7 +31,7 @@ export default function NavBar() {
         </div>
         <SearchBar />
         <nav className="nav-menu">
-          <ul className={menuOptions}>
+          <ul className={isActive ? "nav-active nav-links" : "nav-links"}>
             {menuList.length &&
               menuList.map((link, i) => {
                 return (
@@ -46,7 +42,7 @@ export default function NavBar() {
               })}
           </ul>
           <div
-            className={burgerOptions}
+            className={isActive ? "hamburger toggle" : "hamburger"}
             onClick={() => setActive(!isActive)}
             ref={node}
           >

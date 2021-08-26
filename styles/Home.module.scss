@@ -1,9 +1,9 @@
 $background-color: #fff;
 $border-color: #eaeaea;
+$primary-color: #0070f3;
 $transition: color 0.15s ease, border-color 0.15s ease;
    
 @mixin cardDefaults {
-  margin: 1rem;
   padding: 1.7rem;
   text-align: left;
   text-decoration: none;
@@ -12,23 +12,19 @@ $transition: color 0.15s ease, border-color 0.15s ease;
   background-color: $background-color;
   justify-content: space-between;
   h2 {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 }
 
 .container {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   height: auto !important;
   overflow: scroll;
   background-color: #f5f5f7;
 }
 
 .main {
-  padding: 5rem 0;
+  padding: 3rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -38,7 +34,9 @@ $transition: color 0.15s ease, border-color 0.15s ease;
 
 .footer {
   width: 100%;
-  height: 80px;
+  height: 15vh;
+  bottom: 0;
+  position: absolute;
   font-size: 12px;
   border-top: 1px solid $border-color;
   display: flex;
@@ -75,33 +73,59 @@ $transition: color 0.15s ease, border-color 0.15s ease;
   font-size: 1.5rem;
 }
 
-.grid {
-  display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // flex-wrap: wrap;
-  max-width: 800px;
-  margin-top: 3rem;
-}
-
 .card {
   @include cardDefaults();
-  width: 450px;
-  // grid-template-columns: [index] 16px [first] 4fr [var1] 2fr [last] minmax(120px,1fr);
-  .content {
-    display: flex;
+  margin-left: auto;
+  margin-right: 50px;
+  width: 375px;
+  .grid {
+    display: grid;
+    grid-template-columns: 20px 40px auto 50px;
+    grid-gap: 10px;
+    padding-top: 27px;
     align-items: center;
-    padding: 20px 0px
   }
-  a {
-    padding: 10px 25px;
-    font-size: 1rem;
-    line-height: 1.5;
+  .cover_art {
+    width: 40px;
+    height: 40px;
+    border: 1px solid $border-color;
+    background-color: $background-color;
   }
   .column_order {
-    margin-right: auto;
+    margin-left: 10px;
   }
-}
+  .lyrix {
+    margin-left: auto;
+    cursor: pointer;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}  
+
+
+// .grid {
+//   display: flex;
+//   max-width: 800px;
+//   margin-top: 3rem;
+//   .card {
+//     @include cardDefaults();
+//     width: 450px;
+//     .content {
+//       display: flex;
+//       align-items: center;
+//       padding: 20px 0px
+//     }
+//     a {
+//       padding: 10px 25px;
+//       font-size: 1rem;
+//       line-height: 1.5;
+//     }
+//     .column_order {
+//       margin-right: auto;
+//     }
+//   }  
+// }
 
 .horizontal_container {
   @include cardDefaults();

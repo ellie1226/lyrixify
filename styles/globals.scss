@@ -90,7 +90,7 @@ header {
 /*-----Media Screens-----*/
 @media screen and (max-width: 1024px) {
   .nav-links li {
-    margin: 0 12px;
+    margin: 0 -3px;
   }
 }
 
@@ -118,7 +118,7 @@ header {
       opacity: 0;
     }
     a {
-      font-size: 12px;
+      font-size: 13px;
     }
   }
 
@@ -135,6 +135,7 @@ header {
     display: block;
   }
 }
+
 // navBar animation
 @keyframes navLink-fade {
   from {

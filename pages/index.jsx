@@ -78,13 +78,13 @@ export default function Home({ data }) {
   );
 }
 
-// export const getStaticProps = async () => {
-//   const response = await searchAllItems('snoh');
-//   const data = await response.json();
+export const getStaticProps = async () => {
+  const response = await searchAllItems('snoh');
+  const data = await response.json();
 
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// };
+  return {
+    props: {
+      data,
+    },
+  };
+};

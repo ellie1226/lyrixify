@@ -7,8 +7,10 @@ $background-color: rgb(231, 228, 228);
   background-color: white;
   border-radius: 40px;
   position: relative;
+  display: flex;
+  align-items: center;
   margin: auto;
-  width: 30%;
+  width: 40%;
   height: 37px;
   cursor: pointer;
   &:hover,
@@ -19,17 +21,16 @@ $background-color: rgb(231, 228, 228);
   .elements_container {
     width: 100%;
     display: flex;
-    padding: 6px 2px 0px 15px;
   }
   .magnifierIcon {
-    margin-right: 10px;
+    margin: 5px 10px 0px 15px;
     color: grey;
   }
   .search {
     width: 100%;
+    margin: 1px;
     height: auto;
     border: none;
-    margin-bottom: 5px;
     border-radius: 60px;
     font-family: inherit;
     cursor: pointer;
@@ -39,9 +40,16 @@ $background-color: rgb(231, 228, 228);
   }
 }
 
+// /*-----Media Screens-----*/
+
 @media screen and (max-width: 768px) {
   .box_container {
-    width: 60%;
+    width: 40%;
     right: 60px;
+    .search {
+      &::placeholder {
+        color: transparent;
+      }
+    }
   }
 }

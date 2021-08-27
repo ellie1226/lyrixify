@@ -4,6 +4,7 @@ import NavBar from "./NavBar";
 
 import TopTracks from "./TopTracks";
 import TopArtists from "./TopArtists";
+import MetaDataContainer from "./MetaDataContainer";
 
 // import { searchAllItems } from '../lib/spotify';
 
@@ -18,8 +19,9 @@ export default function Home({ data }) {
         </Head>
         <NavBar />
         <main className={styles.main}>
-          <TopTracks />
-          <TopArtists />
+          <MetaDataContainer />
+            <TopTracks />
+            <TopArtists />
         </main>
         <footer className={styles.footer}>
           <a>© 2021 Created by Ellen Kwan</a>

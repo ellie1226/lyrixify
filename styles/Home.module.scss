@@ -11,9 +11,16 @@ $transition: color 0.15s ease, border-color 0.15s ease;
   border-radius: 10px;
   background-color: $background-color;
   justify-content: space-between;
+  overflow: scroll;
   h2 {
     font-size: 0.8rem;
   }
+}
+
+@mixin leftCardDefaults {
+  width: 65.5%;
+  float: left;
+  overflow-y: scroll;
 }
 
 .container {
@@ -21,15 +28,88 @@ $transition: color 0.15s ease, border-color 0.15s ease;
   height: auto !important;
   overflow: scroll;
   background-color: #f5f5f7;
-}
-
-.main {
-  padding: 2rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  .main {
+    padding: 2rem 0;
+    margin: 0px 50px;
+    .card {
+      @include cardDefaults();
+      width: 33%;
+      height: 550px;
+      float: right;
+      .grid {
+        display: grid;
+        grid-template-columns: 20px 40px auto 50px;
+        grid-gap: 10px;
+        padding-top: 27px;
+        align-items: center;
+      }
+      .cover_art {
+        width: 40px;
+        height: 40px;
+        border: 1px solid $border-color;
+        background-color: $background-color;
+      }
+      .column_order {
+        margin-left: 10px;
+      }
+      .lyrix {
+        margin-left: auto;
+        cursor: pointer;
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+    .horizontal_container {
+      @include cardDefaults();
+      @include leftCardDefaults();
+      display: grid;
+      grid-auto-flow: column;
+      gap: 40px;
+      margin: 20px 0px;
+      .horizontal_list {
+        display: grid;
+        margin-top: 50px;
+        gap: 5px;
+        justify-items: center;
+        align-items: center;
+      }
+      h3 {
+        position: absolute;
+      }
+      p,
+      h4 {
+        font-size: .7rem;
+      }
+      .cover {
+        width: 80px;
+        height: 80px;
+        border: 1px solid $border-color;
+        background-color: $background-color;
+      }
+    }
+    .lyrix_container {
+      @include cardDefaults();
+      @include leftCardDefaults();
+      height: 300px;
+    }
+  }
+  .footer {
+    width: 100%;
+    height: 8vh;
+    font-size: 12px;
+    border-top: 1px solid $border-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    a {
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+    }
+  }
 }
 
 .title {
@@ -54,92 +134,29 @@ $transition: color 0.15s ease, border-color 0.15s ease;
   font-size: 1.5rem;
 }
 
-.card {
-  @include cardDefaults();
-  margin-left: auto;
-  margin-right: 50px;
-  width: 360px;
-  .grid {
-    display: grid;
-    grid-template-columns: 20px 40px auto 50px;
-    grid-gap: 10px;
-    padding-top: 27px;
-    align-items: center;
-  }
-  .cover_art {
-    width: 40px;
-    height: 40px;
-    border: 1px solid $border-color;
-    background-color: $background-color;
-  }
-  .column_order {
-    margin-left: 10px;
-  }
-  .lyrix {
-    margin-left: auto;
-    cursor: pointer;
-    &:hover {
-      color: $primary-color;
-    }
-  }
-}  
+// /*-----Media Screens-----*/
 
-.horizontal_container {
-  @include cardDefaults();
-  position: absolute;
-  display: grid;
-  gap: 40px;
-  grid-auto-flow: column;
-  left: 50px;
-  bottom: 11vh;
-  width: 65%;
-  height: auto;
-  overflow-x: scroll;
-  .horizontal_list {
-    display: grid;
-    margin-top: 50px;
-    gap: 5px;
-    justify-items: center;
-    align-items: center;
+@media screen and (max-width: 1000px) {
+  .card {
+    width: 43% !important;
+    font-size: 13px;
   }
-  h3 {
-    position: absolute;
-    padding: 1.7rem;
-  }
-  p,
-  h4 {
-    font-size: .7rem;
-  }
-  .cover {
-    width: 80px;
-    height: 80px;
-    border: 1px solid $border-color;
-    background-color: $background-color;
-  }
-}
+  .lyrix_container,
+  .horizontal_container {
+    width: 55% !important;
+    font-size: 13px;
 
-.footer {
-  width: 100%;
-  height: 10vh;
-  bottom: 0;
-  position: absolute;
-  font-size: 12px;
-  border-top: 1px solid $border-color;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  a {
-    width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
   }
 }
 
 @media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+  .card {
+    margin-top: 20px;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  .lyrix_container,
+  .horizontal_container {
+    width: 100% !important;
   }
 }

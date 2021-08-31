@@ -1,14 +1,13 @@
 import styles from "../styles/Home.module.scss";
 import Head from "next/head";
-import NavBar from "./NavBar";
+import NavBar from "../components/NavBar";
 
-import TopTracks from "./TopTracks";
-import TopArtists from "./TopArtists";
-import MetaDataContainer from "./MetaDataContainer";
+import TopTracks from "../components/TopTracks";
+import TopArtists from "../components/TopArtists";
+import MetaDataContainer from "../components/MetaDataContainer";
 
-// import { searchAllItems } from '../lib/spotify';
+export default function Home() {
 
-export default function Home({ data }) {
   return (
     <>
       <div className={styles.container}>
@@ -20,8 +19,8 @@ export default function Home({ data }) {
         <NavBar />
         <main className={styles.main}>
           <MetaDataContainer />
-            <TopTracks />
-            <TopArtists />
+          <TopTracks />
+          <TopArtists />
         </main>
         <footer className={styles.footer}>
           <a>© 2021 Created by Ellen Kwan</a>
@@ -32,12 +31,14 @@ export default function Home({ data }) {
 }
 
 // export const getStaticProps = async () => {
-//   const response = await searchAllItems('snoh');
-//   const data = await response.json();
+//   const response = await fetch('http://localhost:3000/api/top_tracks');
+//   // const tracks = response.json();
+
+//   console.log("getStaticProps catatatatatata", response);
 
 //   return {
 //     props: {
-//       data,
+//       response,
 //     },
 //   };
 // };

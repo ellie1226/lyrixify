@@ -12,7 +12,7 @@ const authorizationHeader = Buffer.from(
 ).toString('base64');
 
 const isExpired = () => {
-  expireTime ? Date.now() > expireTime : false;
+  return Date.now() > expireTime;
 };
 
 const authenticate = async () => {
@@ -29,21 +29,23 @@ const authenticate = async () => {
 
   const token = await response.json();
   
-  // saves inital token expiry time for reference at every api request
+  // Saves inital token expiry time for reference at every api request
   const expires_in = Number.parseInt(token.expires_in, 10);
   expireTime = Date.now() + expires_in * 1000;
   
   isAuthorized = token.access_token;
+  console.log('Inside of function', isAuthorized, expireTime);
 
   return isAuthorized;
 };
 
 const setAccessToken = async () => {
-  isAuthorized && !isExpired() ? isAuthorized : await authenticate();
+  return isAuthorized && !isExpired() ? isAuthorized : await authenticate();
 };
 
 export const performRequestsFromParams = async (api_url) => {
   const accessToken = await setAccessToken();
+  console.log('retrieved access token', accessToken, isExpired());
 
   return fetch(api_url, {
     headers: {
@@ -52,6 +54,7 @@ export const performRequestsFromParams = async (api_url) => {
   });
 };
 
+// API Endpoints
 export const searchTracks = () => {
   const SEARCH_TRACKS = `https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V`;
   return performRequestsFromParams(SEARCH_TRACKS);
@@ -62,3 +65,9 @@ export const searchAllItems = (keywords) => {
   const SEARCH_ARTISTS = `https://api.spotify.com/v1/search?q=${keywords}&type=artist,track&limit=10`;
   return performRequestsFromParams(SEARCH_ARTISTS);
 };
+
+export const getTopTracks = () => {
+  const GET_TOP_TRACKS = `https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF`;
+  return performRequestsFromParams(GET_TOP_TRACKS);
+};
+

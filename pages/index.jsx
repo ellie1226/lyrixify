@@ -1,13 +1,11 @@
-import styles from "../styles/Home.module.scss";
 import Head from "next/head";
 import NavBar from "../components/NavBar";
-
+import styles from "../styles/Home.module.scss";
 import TopTracks from "../components/TopTracks";
-import TopArtists from "../components/TopArtists";
+import TopArtistsAndAlbums from "../components/TopArtistsAndAlbums";
 import MetaDataContainer from "../components/MetaDataContainer";
 
-export default function Home() {
-
+function Home() {
   return (
     <>
       <div className={styles.container}>
@@ -20,7 +18,7 @@ export default function Home() {
         <main className={styles.main}>
           <MetaDataContainer />
           <TopTracks />
-          <TopArtists />
+          <TopArtistsAndAlbums />
         </main>
         <footer className={styles.footer}>
           <a>© 2021 Created by Ellen Kwan</a>
@@ -30,15 +28,13 @@ export default function Home() {
   );
 }
 
+// TODO: Add in Static Props
 // export const getStaticProps = async () => {
-//   const response = await fetch('http://localhost:3000/api/top_tracks');
-//   // const tracks = response.json();
-
-//   console.log("getStaticProps catatatatatata", response);
-
 //   return {
 //     props: {
 //       response,
 //     },
 //   };
 // };
+
+export default Home;

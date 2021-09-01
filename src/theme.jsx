@@ -17,11 +17,6 @@ const theme = createTheme({
       default: '#fff',
     },
   },
-  overrides: {
-    Autocomplete: {
-      size: 'small',
-    }
-  },
   typography: {
     fontFamily: [
       'Montserrat',

@@ -67,7 +67,7 @@ export const searchAllItems = (keywords) => {
 };
 
 export const getTopTracks = () => {
-  const GET_TOP_TRACKS = `https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF`;
+  const GET_TOP_TRACKS = `https://api.spotify.com/v1/playlists/37i9dQZF1DXcBWIGoYBM5M`;
   return performRequestsFromParams(GET_TOP_TRACKS);
 };
 

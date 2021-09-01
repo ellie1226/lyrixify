@@ -1,6 +1,7 @@
 $background-color: #fff;
 $border-color: #eaeaea;
 $primary-color: #0070f3;
+$secondary-color: #f5f5f780;
 $transition: color 0.15s ease, border-color 0.15s ease;
    
 @mixin cardDefaults {
@@ -34,13 +35,15 @@ $transition: color 0.15s ease, border-color 0.15s ease;
       @include cardDefaults();
       width: 33%;
       float: right;
-      margin-bottom: 20px;
       height: 48.5em;
+      .highlight {
+        background-color: #f5f5f795;
+      }
       .grid {
         display: grid;
         grid-template-columns: 20px 40px auto 50px;
         grid-gap: 10px;
-        padding-top: 27px;
+        height: 4rem;
         align-items: center;
       }
       .cover_art {
@@ -57,6 +60,21 @@ $transition: color 0.15s ease, border-color 0.15s ease;
         cursor: pointer;
         &:hover {
           color: $primary-color;
+        }
+      }
+      .background {
+        padding: 0px 10px;
+        border-radius: 5px;
+        &:hover {
+          background-color: #f5f5f7;
+          background-image: url("../public/assets/play@3x.png");
+          background-repeat: no-repeat;
+          background-size: 25px 25px;
+          background-position: 3% 50%;
+          height: 70px;
+          h3 {
+            color: transparent;
+          }
         }
       }
     }
@@ -100,7 +118,7 @@ $transition: color 0.15s ease, border-color 0.15s ease;
     height: 10vh;
     bottom: 0;
     font-size: 12px;
-    background-color: #f5f5f780;
+    background-color: $secondary-color;
     border-top: 1px solid $border-color;
     display: flex;
     justify-content: center;
@@ -113,28 +131,6 @@ $transition: color 0.15s ease, border-color 0.15s ease;
       flex-grow: 1;
     }
   }
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-  a {
-    color: #0070f3;
-    text-decoration: none;
-    &:hover,
-    &:focus,
-    &:active {
-      text-decoration: none;
-    }
-  }
-  text-align: center;
-}
-
-.description {
-  text-align: center;
-  line-height: 1.5;
-  font-size: 1.5rem;
 }
 
 // /*-----Media Screens-----*/

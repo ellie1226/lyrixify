@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-// variables
+// Variables
 $primary-color: #0070f3;
 $font-stack: Montserrat, Roboto, Helvetica Neue, sans-serif;
 $background-color: #f5f5f7;
-
 
 html,
 body {
@@ -80,15 +79,17 @@ header {
   .line1 {
     transform: rotate(-45deg) translate(-5px,5px);
   }
+
   .line2 {
     opacity: 0;
   }
+
   .line3 {
     transform: rotate(45deg) translate(-5px,-4.5px);
   }
 }
 
-/*-----Media Screens-----*/
+// Media Screens
 @media screen and (max-width: 1024px) {
   .nav-links li {
     margin: 0 -3px;
@@ -115,10 +116,12 @@ header {
     background-color: $background-color;
     align-items: center;
     z-index: 1;
+
     li {
       margin: 25px;
       opacity: 0;
     }
+
     a {
       font-size: 13px;
     }
@@ -127,6 +130,7 @@ header {
   .nav-active {
     transition: transform 0.5s ease-in;
     transform: translateX(0%);
+
     li {
       opacity: 100%;
       animation: navLink-fade 1.5s;
@@ -144,6 +148,7 @@ header {
     opacity: 0;
     transform: translateX(50px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0px);

@@ -1,22 +1,24 @@
-import styles from "../styles/Home.module.scss";
 import React, { useEffect, useState } from "react";
-import { t } from "ttag";
-import useSWR from "swr";
-
+import styles from "../styles/Home.module.scss";
 import AudioPLayer from "./AudioPlayer";
 import fetcher from "../lib/fetcher";
+import useSWR from "swr";
+import { t } from "ttag";
 
 function TopTracks() {
   const [isSelected, setSelected] = useState({
-    activeTrackIndex: null,
+    activeTrackIndex: 0,
     activeState: false,
   });
 
   const { data } = useSWR("/api/top_tracks", fetcher);
   const tracks = data?.tracks;
-  console.log("data", tracks);
 
-  function toggleActive(index) {
+  useEffect((tracks) => {
+    return tracks;
+  }, []);
+
+  function toggleActiveRow(index) {
     setSelected({
       ...isSelected,
       activeTrackIndex: index,
@@ -31,10 +33,6 @@ function TopTracks() {
       return `${styles.background}`;
     }
   }
-
-  useEffect((tracks) => {
-    return tracks;
-  }, []);
 
   function toggleAudioPlayer(index, preview) {
     if (isSelected.activeTrackIndex == index) {
@@ -53,24 +51,23 @@ function TopTracks() {
 
       {tracks.map((track, index) => {
         return (
-          <div className={toggleActiveStyles(index)} key={index}>
-            <div className={styles.grid} onClick={() => toggleActive(index)}>
+          <div className={toggleActiveStyles(index)} key={track.id}>
+            <div className={styles.grid} onClick={() => toggleActiveRow(index)}>
               {toggleAudioPlayer(index, track.preview)}
               <a
-                href={track.song_url}
+                href={track.song_spotify_url}
                 target="_blank"
-                className={styles.cover_art}
               >
                 <img
-                  alt="AlbumCover"
+                  alt="Album Cover"
                   src={track.image}
                   width="40"
                   height="40"
                 />
               </a>
               <div className={styles.column_order}>
-                <h2>{track.name}</h2>
-                <p>{track.artist_name}</p>
+                <h2>{t`${track.name}`}</h2>
+                <p>{t`${track.artist_name}`}</p>
               </div>
               <a href={track.preview} className={styles.lyrix}>
                 Lyrix

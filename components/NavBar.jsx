@@ -1,23 +1,25 @@
 import React, { useState, useEffect, useRef } from "react";
 import SearchBar from "./SearchBar";
 
-export default function NavBar() {
+function NavBar() {
   const [isActive, setActive] = useState(false);
   const node = useRef();
 
-  // navBar links and paths
+  // navBar links and style options
   const menuList = ["About Us", "Sign Up"];
+  const menuStyleOptions = isActive ? "nav-active nav-links" : "nav-links";
+  const hamburgerOptions = isActive ? "hamburger toggle" : "hamburger";
 
   useEffect(() => {
     // add when mounted
-    document.addEventListener("mousedown", handleClick);
+    document.addEventListener("mousedown", onClickHandle);
     // return function to be called when unmounted
     return () => {
-      document.removeEventListener("mousedown", handleClick);
+      document.removeEventListener("mousedown", onClickHandle);
     };
   }, []);
 
-  const handleClick = (e) => {
+  const onClickHandle = (e) => {
     if (!node.current.contains(e.target)) {
       setActive(false);
     }
@@ -31,7 +33,7 @@ export default function NavBar() {
         </div>
         <SearchBar />
         <nav className="nav-menu">
-          <ul className={isActive ? "nav-active nav-links" : "nav-links"}>
+          <ul className={menuStyleOptions}>
             {menuList.length &&
               menuList.map((link, i) => {
                 return (
@@ -42,7 +44,7 @@ export default function NavBar() {
               })}
           </ul>
           <div
-            className={isActive ? "hamburger toggle" : "hamburger"}
+            className={hamburgerOptions}
             onClick={() => setActive(!isActive)}
             ref={node}
           >
@@ -55,3 +57,5 @@ export default function NavBar() {
     </div>
   );
 }
+
+export default NavBar;

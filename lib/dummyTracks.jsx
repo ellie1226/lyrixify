@@ -1,4 +1,4 @@
-export default dummyObject = [
+export default dummyTracks = [
     {
       artist: "Snoh Aalegra",
       song: "I Want You Around",
@@ -15,24 +15,23 @@ export default dummyObject = [
       artist: "Dua Lipa",
       song: `Don't Start Now`,
     },
-    {
-      artist: "Tones and I",
-      song: "Dance Monkey",
-    },
-    {
-      artist: "Dua Lipa",
-      song: `Don't Start Now`,
-    },
-    {
-      artist: "Dua Lipa",
-      song: `Don't Start Now`,
-    },
-    {
-      artist: "Tones and I",
-      song: "Dance Monkey",
-    },
-    {
-      artist: "Dua Lipa",
-      song: `Don't Start Now`,
-    },
   ];
+
+  export default dummyAlbums = [
+    {
+      artist: "Snoh Aalegra",
+      followers: "1000 plays",
+    },
+    {
+      artist: "Usher Ray",
+      followers: "1000 plays",
+    },
+    {
+      artist: "Tones and I",
+      followers: "1000 plays",
+    },
+    {
+      artist: "Dua Lipa",
+      followers: `1000 plays`,
+    },
+  ];    

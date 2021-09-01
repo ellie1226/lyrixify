@@ -32,7 +32,7 @@ const dummyObject = [
   },
 ];
 
-export default function TopArtists() {
+function TopArtists() {
   return (
     <div className={styles.horizontal_container}>
       <h3>Top Artists</h3>
@@ -51,3 +51,5 @@ export default function TopArtists() {
     </div>
   );
 }
+
+export default TopArtists;
